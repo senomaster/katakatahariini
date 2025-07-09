@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <style>
+              body {
+            font-family: 'Verdana', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+        header {
+            padding: 80px 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+        header h1 {
+            font-size: 4rem;
+            margin: 0;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        header p {
+            font-size: 1.6rem;
+            margin: 10px 0;
+            font-style: italic;
+            color: #ffdf00;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+            animation: pulse 2s infinite ease-in-out;
+        }
+        .time {
+            font-size: 3rem;
+            margin: 20px 0;
+            font-weight: bold;
+            color: #ffea00;
+        }
+        .date {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: #fff;
+            font-weight: lighter;
+        }
+        footer {
+            margin-top: 15px;
+            font-size: 1.1rem;
+            color: #ccc;
+        }
+        footer a {
+            color: #ffdf00;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        footer a:hover {
+            color: #fff;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Kata kata, hari ini!</h1>
+        <p>
+كُلُّ شَيْءٍ سَيَأْتِيكَ فِي وَقْتِهِ            المُنَاسِبِ، ثِقْ بِتَدْبِيرِ اللهِ وَاطْمَئِنَّ
+</p>
+<p>
+Segala sesuatu akan kamu dapatkan di waktu yang tepat.  
+Percayalah pada ketentuan Allah dan tenanglah.</p>
+        <div class="time" id="clock">Loading...</div>
+        <div class="date" id="date">Loading...</div>
+    </header>
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const timeString = `${hours}:${minutes}:${seconds}`;
+            document.getElementById('clock').textContent = timeString;
+        }
+
+        function updateDate() {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const dateString = now.toLocaleDateString('id-ID', options);
+            document.getElementById('date').textContent = dateString;
+        }
+
+        setInterval(updateTime, 1000);
+        updateTime(); // To display time immediately when page loads
+        updateDate(); // To display date immediately when page loads
+    </script>
+</body>
+</html>
